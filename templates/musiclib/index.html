@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My World">
+    <meta name="author" content="Julio">
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+	body {
+	    padding-top: 60px;
+	    padding-bottom: 40px;
+	}
+	.sidebar-nav {
+	    padding: 9px 0;
+	}
+    </style>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/myspace.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+	  <div class="container">
+	    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	    </a>
+	    <a class="brand" href="#">My World</a>
+	    <div class="nav-collapse collapse">
+		<ul class="nav">
+		    <li class="active"><a href="#">Home</a></li>
+		    <li><a href="#about">About</a></li>
+		    <li><a href="#contact">Contact</a></li>
+		</ul>
+		<form class="navbar-form pull-right">
+		    <input class="span2" type="text" placeholder="Email">
+		    <input class="span2" type="password" placeholder="Password">
+		    <button type="submit" class="btn">Sign in</button>
+		</form>
+	    </div>
+	</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="antihero-unit hero-unit">
+	<h1><em>Welcome</em></h1>
+	<p>to my music library....</p>
+	<p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+      <div class="row">
+	<div class="span6">
+	  <h2>Most Popular Audio</h2>
+	</div>
+	<div class="span6">
+	  <h2>Most Popular Video</h2>
+	</div>
+      </div>
+      <div class="row">
+	<div class="span6">
+	  <h2>Recent Arrivals</h2>
+	  <ul class="nav nav-list">
+	    <li class="nav-header">Music</li>
+	    {% if latest_songs_list %}
+	      {% for song in latest_songs_list %}
+		<li><a href="/musiclib/{{ song.id }}/">{{ song.name }}/</a></li>
+	      {% endfor %}
+	    {% else %}
+		<li><a href="#">...</a></li>
+	    {% endif %}
+	    <li class="nav-header">Video</li>
+	    <li><a href="#">...</a></li>
+	  </ul>
+	</div>
+	<div class="span6">
+	  <h2>My Favorites</h2>
+	  <ul class="nav nav-list">
+	    <li class="nav-header">Music</li>
+	    <li><a href="/music/Favorites/all">All</a></li>
+	    <li><a href="/music/Favorites/extreme">Extreme</a></li>
+	    <li><a href="/music/Favorites/mellow">Mellow</a></li>
+	    <li><a href="/music/Favorites/spanish">Spanish</a></li>
+	    <li class="nav-header">Video</li>
+	    <li><a href="video.html">All</a></li>
+	    <li class="nav-header">Stories</li>
+	    <li><a href="#">All</a></li>
+	  </ul>
+	</div>
+      </div>
+    </div>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>

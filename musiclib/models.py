@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # Create your models here.
 
@@ -10,19 +11,28 @@ class Artist(models.Model):
     def __unicode__(self):
 	return self.name
 
-class Song(models.Model):
-    name = models.CharField(max_length=256)
-    type = models.CharField(max_length=4, choices=MEDIA_TYPES)
-    last_mod = models.DateTimeField('last modified')
-    file = models.FilePathField()
+class Video(models.Model):
+    name = models.CharField(max_length=256, null=True, blank=True)
     video = models.URLField()
+    embedCode = models.CharField(max_length=512, null=True, blank=True)
+    def __unicode__(self):
+        return self.name
+
+class Song(models.Model):
+    name = models.CharField(max_length=256, error_messages = {'required': 'Please enter the Song Title'})
+    type = models.CharField(max_length=4, choices=MEDIA_TYPES, help_text='Pick a format type if you know it', null=True, blank=True)
+    created = models.DateTimeField(default=datetime.now)
+    file = models.FileField(upload_to='media')
+    video = models.ForeignKey(Video, null=True, blank=True)
     artist = models.ForeignKey(Artist)
     def __unicode__(self):
 	return self.name
 
 class Playlist(models.Model):
     name = models.CharField(max_length=32)
-    song = models.ManyToManyField(Song)
+    song = models.ManyToManyField(Song, null=True, blank=True)
     owner = models.ForeignKey(User)
     def __unicode__(self):
 	return self.name
+
+
