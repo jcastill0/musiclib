@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from musiclib.models import Song
+from musiclib.models import Song, Playlist
 from django.template import Context, loader
 
 def index(request):
@@ -10,3 +10,10 @@ def index(request):
 	})
     return HttpResponse(tmplt.render(ctx))
 
+def playlistIndex(request):
+    playlists = Playlist.objects.all().order_by('-name')[:5]
+    tmplt = loader.get_template('musiclib/playlist/index.html')
+    ctx = Context ({
+        'playlists': playlists,
+        })
+    return HttpResponse(tmplt.render(ctx))
