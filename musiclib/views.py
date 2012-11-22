@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from musiclib.models import Song, Playlist
 from django.template import Context, loader
+from django.http import Http404
 
 def index(request):
     latest_songs_list = Song.objects.all().order_by('-created')[:5]
@@ -17,3 +18,17 @@ def playlistIndex(request):
         'playlists': playlists,
         })
     return HttpResponse(tmplt.render(ctx))
+
+def playlistDetail(request, playlist_id):
+    try:
+	playlist = Playlist.objects.get(pk=playlist_id)
+    except Playlist.DoesNotExist:
+	raise Http404
+    songs = playlist.song.all()
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+    ctx = Context ({
+	'playlist': playlist,
+	'songs': songs,
+	})
+    return HttpResponse(tmplt.render(ctx))
+#   return HttpResponse("HEllo World %s" %playlist_id)

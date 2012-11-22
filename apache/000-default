@@ -1,0 +1,95 @@
+<VirtualHost *:80>
+	ServerAdmin julio.castillo.2010@gmail.com
+	ServerName home
+
+	DocumentRoot /var/www
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /var/www/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+    Alias /music/ "/var/www/music/"
+    <Directory "/var/www/music">
+	Order allow,deny
+	Allow from all
+	Options Indexes FollowSymLinks
+	AuthType Basic
+	AuthName "Music Lovers may proceed"
+	AuthUserFile "/var/www/music/.htpasswd"
+	Require valid-user
+    </Directory>
+
+#   <Directory "/var/www/music">
+#	AuthType Digest
+#	AuthName "Private"
+#	AuthDigestDomain /
+#	AuthDigestProvider file
+#	AuthUserFile "/var/www/music/.htdigest"
+#	Require valid-user
+#   </Directory>
+
+#   ProxyPreserveHost on
+#   <Proxy *>
+#	Order allow,deny
+#	Allow from all
+#   </Proxy>
+#   ProxyPass		/webapp/	http://127.0.0.1:6464/webapp/
+#   ProxyPassReverse	/webapp/	http://127.0.0.1:6464/webapp/
+
+#   <Directory  /var/www/wsgi>
+#       Order allow,deny
+#       Allow from all
+#   </Directory>
+#   WSGIScriptAlias /musicapp /var/www/wsgi/app.wsgi
+
+    Alias /media/       /home/julio/Projects/mysite/mysite/media/
+    Alias /static/      /home/julio/Projects/mysite/mysite/static/
+    <Directory  /home/julio/Projects/mysite/mysite/static>
+        Order deny,allow
+        Allow from all
+    </Directory>
+    <Directory  /home/julio/Projects/mysite/mysite/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    WSGIScriptAlias     /musicapp    /home/julio/Projects/mysite/mysite/wsgi.py
+    <Directory  /home/julio/Projects/mysite/mysite>
+        <Files  wsgi.py>
+          Order deny,allow
+          Allow from all
+        </Files>
+    </Directory>
+
+</VirtualHost>
