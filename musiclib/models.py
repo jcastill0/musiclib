@@ -14,7 +14,7 @@ class Artist(models.Model):
 class Video(models.Model):
     name = models.CharField(max_length=256, null=True, blank=True)
     video = models.URLField()
-    embedCode = models.CharField(max_length=512, null=True, blank=True)
+    embedCode = models.TextField(max_length=512, null=True, blank=True)
     def __unicode__(self):
         return self.name
 
@@ -30,8 +30,9 @@ class Song(models.Model):
 
 class Playlist(models.Model):
     name = models.CharField(max_length=32)
-    song = models.ManyToManyField(Song, null=True, blank=True)
+    songs = models.ManyToManyField(Song, null=True, blank=True)
     owner = models.ForeignKey(User)
+    lastPlayedIX = models.IntegerField(null=True, blank=True)
     def __unicode__(self):
 	return self.name
 

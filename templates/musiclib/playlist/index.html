@@ -52,7 +52,7 @@
 	  <h2>Playlists</h2>
 	</div>
 	<div class="span6">
-	  <button class="btn btn-small btn-primary" type="button">Add</button>
+	  <a class="btn btn-small btn-primary" href="add">Add</a>
 	</div>
       </div>
       {% if playlists %}
@@ -64,13 +64,13 @@
 	      {{ playlist.name }}
 	    </div>
 	    <div class="span1">
-	      <i class="icon-play"></i>
+	      <a href="{{ playlist.id }}"><i class="icon-play"></i></a>
 	    </div>
 	    <div class="span1">
-	      <i class="icon-remove icon-red"></i>
+	      <a href="delete/{{ playlist.id }}"><i class="icon-remove icon-red"></i></a>
 	    </div>
 	    <div class="span4">
-	      <i class="icon-edit"></i>
+	      <a href="edit/{{ playlist.id }}"><i class="icon-edit"></i></a>
 	    </div>
 	  </div>
 	{% endfor %}

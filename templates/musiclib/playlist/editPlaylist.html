@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My Music Library</title>
+    <title>My Music Library - Edit Playlist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My Music Library">
     <meta name="author" content="Julio">
@@ -45,25 +45,16 @@
       </div>
     </div>
     <div class="container">
-      <h1>{{ playlist.name }}</h1>
-      <div class="row">
-	<div class="span6">
-          <ul class="nav nav-list">
-            <li class="nav-header">Songs</li>
-	    {% if songs %}
-	      {% for song in songs %}
-	    <li><i class="icon-music"></i>{{ song.artist.name }} - {{ song.name }}</li>
-	      {% endfor %}
-	    {% endif %}
-	  </ul>
-        </div>
-	<div class="span6">
-	  {% if songs %}
-	  <h3>Now Playing</h3>
-	  <h4>{{ songs }}</h4>
-	  {% endif %}
-	</div>
-      </div>
+      <form class="form-horizontal">
+	<fieldset>
+	  <legend>{{ playlist.name }}</legend>
+	  <div class="control-group">
+	    <div class="controls">
+	      <button type="submit" class="btn btn-primary">Save</button>
+	    </div>
+	  </div>
+	</fieldset>
+      </form>
     </div>
 
     <script src="/static/js/jquery.min.js"></script>

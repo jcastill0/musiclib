@@ -11,6 +11,7 @@ def index(request):
 	})
     return HttpResponse(tmplt.render(ctx))
 
+
 def playlistIndex(request):
     playlists = Playlist.objects.all().order_by('-name')[:5]
     tmplt = loader.get_template('musiclib/playlist/index.html')
@@ -19,16 +20,45 @@ def playlistIndex(request):
         })
     return HttpResponse(tmplt.render(ctx))
 
+
 def playlistDetail(request, playlist_id):
     try:
 	playlist = Playlist.objects.get(pk=playlist_id)
     except Playlist.DoesNotExist:
 	raise Http404
-    songs = playlist.song.all()
+    songs = playlist.songs.all()
+    if {playlist.lastPlayedIX}:
+	songIX = playlist.lastPlayedIX
+    elif (songs.count() > 0):
+	songIX = 1
     tmplt = loader.get_template('musiclib/playlist/playlist.html')
+    ctx = Context ({
+	'playlist': playlist,
+	'songs': songs,
+	'songIX': songIX,
+	})
+    return HttpResponse(tmplt.render(ctx))
+
+
+def playlistAdd(request):
+    tmplt = loader.get_template('musiclib/playlist/addPlaylist.html')
+    ctx = Context ({ })
+    return HttpResponse(tmplt.render(ctx))
+
+
+def playlistEdit(request, playlist_id):
+    try:
+	playlist = Playlist.objects.get(pk=playlist_id)
+    except Playlist.DoesNotExist:
+	raise Http404
+    songs = playlist.songs.all()
+    tmplt = loader.get_template('musiclib/playlist/editPlaylist.html')
     ctx = Context ({
 	'playlist': playlist,
 	'songs': songs,
 	})
     return HttpResponse(tmplt.render(ctx))
-#   return HttpResponse("HEllo World %s" %playlist_id)
+
+
+def playlistDelete(request, playlist_id):
+    return HttpResponse("Delete")
