@@ -1,6 +1,8 @@
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.shortcuts import render_to_response, get_object_or_404
 from musiclib.models import Song, Playlist
-from django.template import Context, loader
+from django.template import Context, loader, RequestContext
 from django.http import Http404
 
 def index(request):
@@ -42,9 +44,19 @@ def playlistDetail(request, playlist_id):
 
 def playlistAdd(request):
     tmplt = loader.get_template('musiclib/playlist/addPlaylist.html')
-    ctx = Context ({ })
-    return HttpResponse(tmplt.render(ctx))
+    ctx = RequestContext(request)
+    return render_to_response('musiclib/playlist/addPlaylist.html', ctx)
 
+
+def playlistSave(request):
+    playListName = request.POST['playlistName']
+    playList = Playlist(name=playListName, owner=User.objects.get(pk=1))
+    playList.save()
+    buttonType = request.POST['addButton']
+    if (buttonType == 'saveNameOnly'):
+	return (playlistIndex(request))
+    else:
+	return (playlistEdit(request, playList.id)) 
 
 def playlistEdit(request, playlist_id):
     try:

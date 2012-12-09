@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
+    url(r'^musiclib/playlist/add/save/$', 'musiclib.views.playlistSave'),
     url(r'^musiclib/playlist/delete/(?P<playlist_id>\d+)/$', 'musiclib.views.playlistDelete'),
     url(r'^musiclib/playlist/edit/(?P<playlist_id>\d+)/$', 'musiclib.views.playlistEdit'),
     url(r'^musiclib/playlist/add/$', 'musiclib.views.playlistAdd'),

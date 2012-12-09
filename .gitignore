@@ -30,3 +30,6 @@ pip-log.txt
 *.mp3
 *.m4a
 *.wma
+
+# vim
+.swp

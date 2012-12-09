@@ -45,22 +45,26 @@
       </div>
     </div>
     <div class="container">
-      <form class="form-horizontal">
+      <form class="form-horizontal" action="save/" method="post">
+      {% csrf_token %}
 	<fieldset>
 	  <legend>Playlist details</legend>
 	  <div class="control-group">
-	    <label class="control-label" for="playlistName">Name </label>
+	    <label class="control-label" for="id_playlistName">Name</label>
 	    <div class="controls">
-	      <input type="text" id="playlistName" placeholder="Playlist Name">
+	      <input type="text" id="id_playlistName" placeholder="Playlist Name" name="playlistName">
 	    </div>
 	  </div>
 	  <div class="control-group">
-	    <div class="controls">
-	      <button type="submit" class="btn btn-primary">Save</button>
-	      <button type="submit" class="btn btn-primary">Add Songs</button>
+	    <div class="controls"-->
+	      <button type="submit" class="btn btn-primary" name="addButton" value="saveNameOnly">Save</button>
+	      <button type="submit" class="btn btn-primary" name="addButton" value="addSongs">Add Songs</button>
 	    </div>
 	  </div>
 	</fieldset>
+	<script type="text/javascript">
+		document.getElementById("id_name").focus();
+	</script>
       </form>
     </div>
 
