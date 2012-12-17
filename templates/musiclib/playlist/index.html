@@ -5,7 +5,7 @@
     <title>My Music Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My Music Library">
-    <meta name="author" content="Julio">
+    <meta name="author" content="JC">
 
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -64,13 +64,13 @@
 	      {{ playlist.name }}
 	    </div>
 	    <div class="span1">
-	      <a href="{{ playlist.id }}"><i class="icon-play"></i></a>
+	      <a href="/musicapp/musiclib/playlist/play/{{playlist.id}}"><i class="icon-play"></i></a>
 	    </div>
 	    <div class="span1">
-	      <a href="delete/{{ playlist.id }}"><i class="icon-remove icon-red"></i></a>
+	      <a href="/musicapp/musiclib/playlist/delete/{{playlist.id}}"><i class="icon-remove icon-red"></i></a>
 	    </div>
 	    <div class="span4">
-	      <a href="edit/{{ playlist.id }}"><i class="icon-edit"></i></a>
+	      <a href="/musicapp/musiclib/playlist/edit/{{playlist.id}}"><i class="icon-edit"></i></a>
 	    </div>
 	  </div>
 	{% endfor %}

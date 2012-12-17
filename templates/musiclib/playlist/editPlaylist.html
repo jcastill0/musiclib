@@ -5,7 +5,7 @@
     <title>My Music Library - Edit Playlist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My Music Library">
-    <meta name="author" content="Julio">
+    <meta name="author" content="JC">
 
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -19,6 +19,7 @@
     </style>
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/static/css/myspace.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-transfer.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico">
   </head>
   <body>
@@ -45,20 +46,50 @@
       </div>
     </div>
     <div class="container">
-      <form class="form-horizontal">
-	<fieldset>
-	  <legend>{{ playlist.name }}</legend>
-	  <div class="control-group">
-	    <div class="controls">
-	      <button type="submit" class="btn btn-primary">Save</button>
-	    </div>
-	  </div>
-	</fieldset>
+
+      <form class="form-horizontal" action="save/" method="post">
+      {% csrf_token %}
+        <fieldset>
+          <legend>{{playlist.name}}</legend>
+          <div class="control-group">
+            <div class="controls">
+              <input type="hidden" id="id_playlistID" name="playlistID" value="{{playlist.id}}">
+            </div>
+            <div class="controls">
+	      <div id="shuttleCombobox"></div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn btn-primary" name="saveSongsButton" value="saveSongs">Save</button>
+            </div>
+          </div>
+        </fieldset>
       </form>
+
     </div>
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-transfer.js"></script>
+    <script>
+	$(function() {
+		var t = $('#shuttleCombobox').bootstrapTransfer(
+			{'target_id': 'multi-select-input',
+			 'height': '15em',
+			 'hilite_selection': true});
+		
+		t.populate([
+		    {% for song in allSongs %}
+			{value:"{{song.id}}",
+			 content:"{{song.artist.name}} - {{song.name}}"},
+		    {% endfor %}
+		]);
+		{% for song in playListSongs %}
+		t.set_values(["song.id"]);
+		{% endfor %}
+	});
+    </script>
 
   </body>
 

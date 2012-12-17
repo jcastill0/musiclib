@@ -5,7 +5,7 @@
     <title>My Music Library - Add Playlist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My Music Library">
-    <meta name="author" content="Julio">
+    <meta name="author" content="JC">
 
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="container">
-      <form class="form-horizontal" action="save/" method="post">
+      <form class="form-horizontal" action="/musicapp/musiclib/playlist/add/save/" method="post">
       {% csrf_token %}
 	<fieldset>
 	  <legend>Playlist details</legend>
@@ -56,9 +56,10 @@
 	    </div>
 	  </div>
 	  <div class="control-group">
-	    <div class="controls"-->
-	      <button type="submit" class="btn btn-primary" name="addButton" value="saveNameOnly">Save</button>
-	      <button type="submit" class="btn btn-primary" name="addButton" value="addSongs">Add Songs</button>
+	    <div class="controls">
+	      <button type="submit" class="btn btn-primary" name="plButton" value="saveNameOnly">Save</button>
+	      <button type="submit" class="btn btn-primary" name="plButton" value="addSongs">Add Songs</button>
+              <a href="/musicapp/musiclib/playlist/">Cancel</a>
 	    </div>
 	  </div>
 	</fieldset>
