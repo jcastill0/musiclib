@@ -43,7 +43,7 @@ def playlistDetail(request, playlist_id):
 
 
 def playlistAdd(request):
-    tmplt = loader.get_template('musiclib/playlist/addPlaylist.html')
+    # tmplt = loader.get_template('musiclib/playlist/addPlaylist.html')
     ctx = RequestContext(request)
     return render_to_response('musiclib/playlist/addPlaylist.html', ctx)
 
@@ -66,13 +66,15 @@ def playlistEdit(request, playlist_id):
 	raise Http404
     playListSongs = playlist.songs.all()
     allSongs = Song.objects.all().order_by('-name')
-    tmplt = loader.get_template('musiclib/playlist/editPlaylist.html')
-    ctx = Context ({
-	'playlist': playlist,
-	'playListSongs': playListSongs,
-	'allSongs': allSongs,
-	})
-    return HttpResponse(tmplt.render(ctx))
+    # tmplt = loader.get_template('musiclib/playlist/editPlaylist.html')
+    #ctx = Context ({'playlist': playlist,'playListSongs': playListSongs,
+#	'allSongs': allSongs,	})
+    # return HttpResponse(tmplt.render(ctx))
+    return render_to_response('musiclib/playlist/editPlaylist.html', {
+        'playlist': playlist,
+        'playListSongs': playListSongs,
+        'allSongs': allSongs,
+	}, RequestContext(request))
 
 
 def playlistSaveSongs(request):

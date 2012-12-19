@@ -47,7 +47,7 @@
     </div>
     <div class="container">
 
-      <form class="form-horizontal" action="save/" method="post">
+      <form class="form-horizontal" action="/musicapp/musiclib/playlist/saveSongs/" method="post">
       {% csrf_token %}
         <fieldset>
           <legend>{{playlist.name}}</legend>
@@ -71,7 +71,7 @@
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/bootstrap-transfer.js"></script>
+    <script src="/static/js/bootstrap-transfer-mod.js"></script>
     <script>
 	$(function() {
 		var t = $('#shuttleCombobox').bootstrapTransfer(
