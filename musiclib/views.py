@@ -4,6 +4,10 @@ from django.shortcuts import render_to_response, get_object_or_404
 from musiclib.models import Song, Playlist
 from django.template import Context, loader, RequestContext
 from django.http import Http404
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def index(request):
     latest_songs_list = Song.objects.all().order_by('-created')[:5]
@@ -43,7 +47,6 @@ def playlistDetail(request, playlist_id):
 
 
 def playlistAdd(request):
-    # tmplt = loader.get_template('musiclib/playlist/addPlaylist.html')
     ctx = RequestContext(request)
     return render_to_response('musiclib/playlist/addPlaylist.html', ctx)
 
@@ -51,6 +54,8 @@ def playlistAdd(request):
 def playlistSave(request):
     buttonType = request.POST['plButton']
     playListName = request.POST['playlistName']
+    user = request.user
+    logger.debug('User=%r' % user)
     playList = Playlist(name=playListName, owner=User.objects.get(pk=1))
     playList.save()
     if (buttonType == 'saveNameOnly'):
@@ -66,10 +71,6 @@ def playlistEdit(request, playlist_id):
 	raise Http404
     playListSongs = playlist.songs.all()
     allSongs = Song.objects.all().order_by('-name')
-    # tmplt = loader.get_template('musiclib/playlist/editPlaylist.html')
-    #ctx = Context ({'playlist': playlist,'playListSongs': playListSongs,
-#	'allSongs': allSongs,	})
-    # return HttpResponse(tmplt.render(ctx))
     return render_to_response('musiclib/playlist/editPlaylist.html', {
         'playlist': playlist,
         'playListSongs': playListSongs,
@@ -83,6 +84,16 @@ def playlistSaveSongs(request):
 	playlist = Playlist.objects.get(pk=playlist_id)
     except Playlist.DoesNotExist:
 	raise Http404
+    newSongs = request.POST.getlist('playListSongs')
+    logger.debug ('Songs = %r' % newSongs)
+    logger.debug ('playlist-1 = %r' % playlist.songs.all())
+    playlist.songs.clear();
+    logger.debug ('playlist-2 = %r' % playlist.songs.all())
+    playlist.save(['songs'])
+    for song in newSongs:
+	playlist.songs.add(song)
+    logger.debug ('playlist-3 = %r' % playlist.songs)
+    #playlist.save(['songs'])
     return (playlistIndex(request))
 
 

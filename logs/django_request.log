@@ -1,0 +1,226 @@
+2012-12-30 14:32:33,103 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
+2012-12-30 14:44:34,269 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2012-12-30 14:44:37,459 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 14:44:43,586 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/saveSongs/img/favicon.ico
+2012-12-30 15:55:20,946 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 15:55:30,150 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 90, in playlistSaveSongs
+    playlist.save(update_fields['songs'])
+NameError: global name 'update_fields' is not defined
+2012-12-30 15:57:24,456 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 15:57:25,354 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/saveSongs/img/favicon.ico
+2012-12-30 15:57:34,123 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 15:57:50,429 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 90, in playlistSaveSongs
+    playlist.save(update_fields=['songs'])
+TypeError: save() got an unexpected keyword argument 'update_fields'
+2012-12-30 20:06:34,053 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:06:37,569 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:06:43,385 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 89, in playlistSaveSongs
+    logger.debug ('Songs = %r' % songs)
+NameError: global name 'songs' is not defined
+2012-12-30 20:07:24,283 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:07:28,350 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:07:34,792 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 90, in playlistSaveSongs
+    playlist.songs.delete();
+AttributeError: 'ManyRelatedManager' object has no attribute 'delete'
+2012-12-30 20:09:54,812 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:09:57,617 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:10:02,321 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 93, in playlistSaveSongs
+    playlist.save(['songs'])
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+IntegrityError: (1062, "Duplicate entry '2' for key 'PRIMARY'")
+2012-12-30 20:14:26,388 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:14:29,909 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:14:41,092 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 93, in playlistSaveSongs
+    playlist.save(['songs'])
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+IntegrityError: (1062, "Duplicate entry '2' for key 'PRIMARY'")
+2012-12-30 20:14:46,772 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:14:48,975 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:14:58,524 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:15:03,637 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 92, in playlistSaveSongs
+    playlist.songs.add(song)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/related.py", line 578, in add
+    self._add_items(self.source_field_name, self.target_field_name, *objs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/related.py", line 663, in _add_items
+    for obj_id in new_ids
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 419, in bulk_create
+    self._batched_insert(objs_without_pk, fields, batch_size)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 868, in _batched_insert
+    using=self.db)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+IntegrityError: (1062, "Duplicate entry '2-2' for key 'playlist_id'")
+2012-12-30 20:35:49,388 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:35:54,954 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2012-12-30 20:35:57,714 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2012-12-30 20:36:11,342 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2012-12-30 20:36:16,867 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/19/img/favicon.ico
+2012-12-30 20:36:22,151 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 91, in playlistSaveSongs
+    playlist.save(['songs'])
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+IntegrityError: (1062, "Duplicate entry '19' for key 'PRIMARY'")
+2012-12-30 20:37:17,557 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/19/img/favicon.ico
+2012-12-30 20:37:20,189 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2012-12-30 20:37:23,466 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/delete/19/img/favicon.ico
+2012-12-30 20:37:25,826 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/delete/21/img/favicon.ico
+2012-12-30 20:37:27,056 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/delete/20/img/favicon.ico
+2012-12-30 20:37:30,388 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/add/img/favicon.ico
+2012-12-30 20:37:37,038 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/save/img/favicon.ico
+2012-12-30 20:39:13,249 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 91, in playlistSaveSongs
+    playlist.save(['songs'])
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+IntegrityError: (1062, "Duplicate entry '22' for key 'PRIMARY'")
+2012-12-30 20:49:46,779 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/add/img/favicon.ico
+2012-12-30 21:04:43,483 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2012-12-30 21:04:52,917 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/24/img/favicon.ico
+2012-12-30 21:05:05,194 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/saveSongs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 92, in playlistSaveSongs
+    playlist.save(['songs'])
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 910, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+IntegrityError: (1062, "Duplicate entry '24' for key 'PRIMARY'")
+2013-01-01 11:26:23,036 [WARNING] django.request: Not Found: /musicapp/musiclib/video.html
+2013-01-01 11:26:23,613 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
+2013-01-02 20:03:26,374 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-02 20:03:32,103 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/add/img/favicon.ico
+2013-01-02 20:03:40,335 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/save/img/favicon.ico
+2013-01-02 20:03:46,150 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/add/img/favicon.ico
+2013-01-02 20:03:52,503 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-02 20:03:54,654 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/add/img/favicon.ico
+2013-01-02 20:04:00,047 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/save/img/favicon.ico
+2013-01-02 20:04:07,925 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico

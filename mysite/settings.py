@@ -130,24 +130,71 @@ INSTALLED_APPS = (
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
+    'formatters': {
+	'verbose': {
+	    'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+	},
+	'simple': {
+	    'format': '%(levelname)s %(message)s'
+	},
+	'standard': {
+	    'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+	},
+    },
+
     'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
+	'require_debug_false': {
+	    '()': 'django.utils.log.RequireDebugFalse'
+	}
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
+	'null': {
+	    'level': 'DEBUG',
+	    'class': 'django.utils.log.NullHandler',
+	},
+	'console':{
+	    'level': 'DEBUG',
+	    'class': 'logging.StreamHandler',
+	    'formatter': 'simple'
+	},
+	'mail_admins': {
+	    'level': 'ERROR',
+	    'filters': ['require_debug_false'],
+	    'class': 'django.utils.log.AdminEmailHandler'
+	},
+	'default': {
+	    'level':'DEBUG',
+	    'class':'logging.handlers.RotatingFileHandler',
+	    'filename': '/home/julio/Projects/mysite/logs/mylog.log',
+	    'maxBytes': 1024*1024*5, # 5 MB
+	    'backupCount': 5,
+	    'formatter':'standard',
+	},
+	'request_handler': {
+	    'level':'DEBUG',
+	    'class':'logging.handlers.RotatingFileHandler',
+	    'filename': '/home/julio/Projects/mysite/logs/django_request.log',
+	    'maxBytes': 1024*1024*5, # 5 MB
+	    'backupCount': 5,
+	    'formatter':'standard',
+	},
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
+	'': {
+	    'handlers': ['default'],
+	    'level': 'DEBUG',
+	    'propagate': True
+	},
+	'django': {
+	    'handlers': ['null'],
+	    'propagate': True,
+	    'level': 'INFO',
+	},
+	'django.request': {
+	    'handlers': ['request_handler'],
+	    'level': 'DEBUG',
+	    'propagate': False,
+	},
     }
 }

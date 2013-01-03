@@ -61,9 +61,8 @@
 	</div>
 	<div class="span1">
 	  <div class="btn-group btn-group-vertical">
-	    <input type="button" name="add" value="add" onClick="MoveItems(sourceList,playListSongs);"/>
-            <button type="submit" class="btn" name="remove" value="remove" onClick="MoveItems(sourceList,playListSongs);">Remove</button>
-            <button type="submit" class="btn" name="test" value="test" onClick="moveItems(sourceList);">Add</button>
+            <button type="submit" class="btn" name="remove" value="remove" onClick="removeItems();">Remove</button>
+            <button type="submit" class="btn" name="add" value="add" onClick="addItems(sourceList);">Add</button>
 	  </div>
 	</div>
 	<div class="span5">
@@ -76,12 +75,15 @@
 		</div>
 		<div class="controls">
 		  <select name="playListSongs" id="playListSongsID" size="20" multiple="multiple">
+		  {% for song in playListSongs %}
+		    <option name="xx" value="{{song.id}}">{{song.artist.name}} - {{song.name}}</option>
+		  {% endfor %}
 		  </select>
 		</div>
 	      </div>
 	      <div class="control-group">
 		<div class="controls">
-		  <button type="submit" class="btn btn-primary" name="saveSongsButton" value="saveSongs">Save</button>
+		  <button type="submit" class="btn btn-primary" name="saveSongsButton" value="saveSongs" onClick="selectAll();">Save</button>
 		</div>
 	      </div>
 	    </fieldset>
@@ -93,7 +95,7 @@
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-	function moveItems(fromObj) {
+	function addItems(fromObj) {
 	    var toObj = document.getElementById('playListSongsID');
 	    for (var selIX = fromObj.length - 1; selIX >= 0; selIX--) {
 		if (fromObj.options[selIX].selected) {
@@ -101,11 +103,31 @@
 		    var newVal  = fromObj.options[selIX].value;
 			// create new option on target select box
 		    var newOption = new Option(newText, newVal);
-		    newOption.selected = true;
 		    toObj[toObj.length] = newOption;
 			// delete the option from the first select box
 		    fromObj[selIX] = null;
 		}
+	    }
+	};
+	function removeItems() {
+	    var toObj = document.getElementById('sourceListID');
+	    var fromObj = document.getElementById('playListSongsID');
+	    for (var selIX = fromObj.length - 1; selIX >= 0; selIX--) {
+		if (fromObj.options[selIX].selected) {
+		    var newText = fromObj.options[selIX].text;
+		    var newVal = fromObj.options[selIX].value;
+			// create new option on target select box
+		    var newOption = new Option(newText, newVal);
+		    toObj[toObj.length] = newOption;
+			// delete the option from the origin select box
+		    fromObj[selIX] = null;
+		}
+	    }
+	};
+	function selectAll() {
+	    var newPlayList = document.getElementById('playListSongsID');
+	    for (var selIX = newPlayList.length - 1; selIX >= 0; selIX--) {
+		newPlayList[selIX].selected = true;
 	    }
 	};
     </script>
