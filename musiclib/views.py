@@ -71,10 +71,18 @@ def playlistEdit(request, playlist_id):
 	raise Http404
     playListSongs = playlist.songs.all()
     allSongs = Song.objects.all().order_by('-name')
+    playListMap = {}
+    for song in playListSongs:
+	playListMap[song.id] = True
+    allSongsList = list(allSongs)
+    for song in allSongsList:
+	found = playListMap.get(song.id)
+	if (found):
+	    allSongsList.remove(song)
     return render_to_response('musiclib/playlist/editPlaylist.html', {
         'playlist': playlist,
         'playListSongs': playListSongs,
-        'allSongs': allSongs,
+        'allSongs': allSongsList,
 	}, RequestContext(request))
 
 
@@ -85,15 +93,10 @@ def playlistSaveSongs(request):
     except Playlist.DoesNotExist:
 	raise Http404
     newSongs = request.POST.getlist('playListSongs')
-    logger.debug ('Songs = %r' % newSongs)
-    logger.debug ('playlist-1 = %r' % playlist.songs.all())
     playlist.songs.clear();
-    logger.debug ('playlist-2 = %r' % playlist.songs.all())
-    playlist.save(['songs'])
     for song in newSongs:
 	playlist.songs.add(song)
-    logger.debug ('playlist-3 = %r' % playlist.songs)
-    #playlist.save(['songs'])
+    playlist.save(force_update=True)
     return (playlistIndex(request))
 
 

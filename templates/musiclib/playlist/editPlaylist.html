@@ -62,6 +62,7 @@
 	<div class="span1">
 	  <div class="btn-group btn-group-vertical">
             <button type="submit" class="btn" name="remove" value="remove" onClick="removeItems();">Remove</button>
+	    <button type="submit" class="btn" name="removeAll" value="removeAll" onClick="removeAll();">Remove All</button>
             <button type="submit" class="btn" name="add" value="add" onClick="addItems(sourceList);">Add</button>
 	  </div>
 	</div>
@@ -122,6 +123,19 @@
 			// delete the option from the origin select box
 		    fromObj[selIX] = null;
 		}
+	    }
+	};
+	function removeAll() {
+	    var toObj = document.getElementById('sourceListID');
+	    var fromObj = document.getElementById('playListSongsID');
+	    for (var selIX = fromObj.length - 1; selIX >= 0; selIX--) {
+		var newText = fromObj.options[selIX].text;
+		var newVal = fromObj.options[selIX].value;
+		// create new option on target select box
+		var newOption = new Option(newText, newVal);
+		toObj[toObj.length] = newOption;
+		// delete the option from the origin select box
+		fromObj[selIX] = null;
 	    }
 	};
 	function selectAll() {
