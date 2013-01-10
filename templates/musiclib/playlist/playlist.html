@@ -59,8 +59,9 @@
         </div>
 	<div class="span6">
 	  {% if songs %}
-	  <h3>Now Playing</h3>
-	  <h4>{{ songs }}</h4>
+	  <h4>Now Playing: {{fixedSong.name}}</h4>
+	  <audio src="/static/{{ fixedSong.file }}" controls>
+	  </audio>
 	  {% endif %}
 	</div>
       </div>

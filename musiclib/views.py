@@ -27,25 +27,6 @@ def playlistIndex(request):
     return HttpResponse(tmplt.render(ctx))
 
 
-def playlistDetail(request, playlist_id):
-    try:
-	playlist = Playlist.objects.get(pk=playlist_id)
-    except Playlist.DoesNotExist:
-	raise Http404
-    songs = playlist.songs.all()
-    if {playlist.lastPlayedIX}:
-	songIX = playlist.lastPlayedIX
-    elif (songs.count() > 0):
-	songIX = 1
-    tmplt = loader.get_template('musiclib/playlist/playlist.html')
-    ctx = Context ({
-	'playlist': playlist,
-	'songs': songs,
-	'songIX': songIX,
-	})
-    return HttpResponse(tmplt.render(ctx))
-
-
 def playlistAdd(request):
     ctx = RequestContext(request)
     return render_to_response('musiclib/playlist/addPlaylist.html', ctx)
@@ -93,9 +74,10 @@ def playlistSaveSongs(request):
     except Playlist.DoesNotExist:
 	raise Http404
     newSongs = request.POST.getlist('playListSongs')
-    playlist.songs.clear();
+    playlist.songs.clear()
     for song in newSongs:
 	playlist.songs.add(song)
+    playlist.lastPlayedIX = 0
     playlist.save(force_update=True)
     return (playlistIndex(request))
 
@@ -107,3 +89,20 @@ def playlistDelete(request, playlist_id):
         raise Http404
     playList.delete()
     return (playlistIndex(request))
+
+def playlistPlay(request, playlist_id):
+    try:
+        playlist = Playlist.objects.get(pk=playlist_id)
+    except Playlist.DoesNotExist:
+        raise Http404
+    songs = playlist.songs.all()
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+    if (songs):
+	oneSong = songs[0]
+    ctx = Context ({
+        'playlist': playlist,
+        'songs': songs,
+	'fixedSong': oneSong,
+        })
+    return HttpResponse(tmplt.render(ctx))
+

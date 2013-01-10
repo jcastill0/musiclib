@@ -57,3 +57,321 @@ TypeError: 'dict' object is not callable
 2013-01-06 17:01:21,177 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/saveSongs/img/favicon.ico
 2013-01-06 17:01:25,173 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
 2013-01-06 17:21:32,900 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:43:58,292 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:44:30,201 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:46:44,637 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:47:53,956 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:48:03,666 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 19:48:06,069 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:51:31,838 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:51:33,966 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:51:46,534 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
+2013-01-06 19:53:25,657 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 19:54:48,110 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27
+2013-01-06 19:55:08,729 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 20:36:11,641 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27
+2013-01-06 20:47:45,292 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 20:47:48,293 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 20:47:55,114 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27
+2013-01-06 20:50:05,467 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 20:50:07,975 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 20:50:10,412 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-06 21:10:58,663 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-06 21:11:02,372 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 21:11:05,970 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-01-06 21:17:27,429 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 21:17:30,007 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 21:17:33,371 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-06 21:35:08,885 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-06 21:35:10,893 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 102, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '(playlist.lastPlayedIX).file' from 'songs(playlist.lastPlayedIX).file'
+2013-01-07 20:37:00,933 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:23:14,710 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:23:17,565 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 102, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '[playlist.lastPlayedIX]' from 'songs[playlist.lastPlayedIX]'
+2013-01-07 21:24:13,459 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:24:16,154 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:24:17,734 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 102, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '[playlist.lastPlayedIX].file' from 'songs[playlist.lastPlayedIX].file'
+2013-01-07 21:25:19,340 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:25:22,020 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:25:23,601 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 102, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '[playlist.lastPlayedIX].file' from 'songs[playlist.lastPlayedIX].file'
+2013-01-07 21:25:51,077 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:25:54,511 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:25:56,028 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-07 21:26:42,986 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:26:45,238 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:26:46,552 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 102, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '[0]' from 'songs[0]'
+2013-01-07 21:27:04,501 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:27:06,679 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:27:08,449 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 102, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '(0)' from 'songs(0)'
+2013-01-07 21:40:40,954 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:40:43,019 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 99, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 246, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 346, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 563, in __init__
+    "from '%s'" % (token[upto:], token))
+TemplateSyntaxError: Could not parse the remainder: '(0)' from 'songs(0)'
+2013-01-07 21:41:10,577 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:41:12,907 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:41:14,723 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/playlist/play/27/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/julio/Projects/mysite/musiclib/views.py", line 99, in playlistPlay
+    tmplt = loader.get_template('musiclib/playlist/playlist.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 134, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 42, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 48, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 156, in get_template_from_string
+    return Template(source, origin, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 267, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 898, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 265, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 320, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: 'songs(0)', expected 'elif', 'else' or 'endif'
+2013-01-07 21:41:51,763 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:41:53,462 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-07 21:41:55,340 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-09 10:26:39,460 [WARNING] django.request: Not Found: /musicapp/musiclib/video.html
+2013-01-09 20:14:34,643 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:14:38,095 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-01-09 20:14:38,259 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-09 20:14:38,340 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-01-09 20:14:38,684 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-01-09 20:14:38,928 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-01-09 20:14:39,215 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-01-09 20:16:23,919 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:16:26,400 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:16:28,756 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-09 20:17:47,303 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:17:50,175 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:17:52,318 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-09 20:20:55,209 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:20:57,523 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:20:59,226 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-09 20:21:32,357 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:21:36,355 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-01-09 20:21:46,752 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:21:53,784 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/2/img/favicon.ico
+2013-01-09 20:21:56,939 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:22:03,880 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/2/img/favicon.ico
+2013-01-09 20:22:18,431 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:22:24,359 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-01-09 20:26:20,792 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-01-09 20:26:23,625 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
