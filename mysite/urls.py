@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^musiclib/playlist/add/$', 'musiclib.views.playlistAdd'),
     url(r'^musiclib/playlist/$', 'musiclib.views.playlistIndex'),
     url(r'^musiclib/$', 'musiclib.views.index'),
+    url(r'^musiclib/login/$', 'musiclib.views.login_view'),
+    url(r'^musiclib/logout/$', 'musiclib.views.logout_view'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

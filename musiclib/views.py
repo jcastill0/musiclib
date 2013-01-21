@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
 from musiclib.models import Song, Playlist
@@ -9,22 +10,40 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def login_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+	    return (playlistIndex(request))
+        else:
+            logger.debug('User not active =%r' % user)
+	    return (index(request))
+    else:
+	logger.debug('User not found =%r' % user)
+	return (index(request))
+
+
+def logout_view(request):
+    logout(request)
+    return (index(request))
+
+
 def index(request):
+    ctx = RequestContext(request);
     latest_songs_list = Song.objects.all().order_by('-created')[:5]
-    tmplt = loader.get_template('musiclib/index.html')
-    ctx = Context ({
-	'latest_songs_list': latest_songs_list,
-	})
-    return HttpResponse(tmplt.render(ctx))
+    return render_to_response('musiclib/index.html', {
+        'latest_songs_list': latest_songs_list,
+        }, RequestContext(request))
 
 
 def playlistIndex(request):
     playlists = Playlist.objects.all().order_by('-name')[:5]
-    tmplt = loader.get_template('musiclib/playlist/index.html')
-    ctx = Context ({
+    return render_to_response('musiclib/playlist/index.html', {
         'playlists': playlists,
-        })
-    return HttpResponse(tmplt.render(ctx))
+        }, RequestContext(request))
 
 
 def playlistAdd(request):
@@ -90,19 +109,18 @@ def playlistDelete(request, playlist_id):
     playList.delete()
     return (playlistIndex(request))
 
+
 def playlistPlay(request, playlist_id):
     try:
         playlist = Playlist.objects.get(pk=playlist_id)
     except Playlist.DoesNotExist:
         raise Http404
     songs = playlist.songs.all()
-    tmplt = loader.get_template('musiclib/playlist/playlist.html')
     if (songs):
 	oneSong = songs[0]
-    ctx = Context ({
+    return render_to_response('musiclib/playlist/playlist.html', {
         'playlist': playlist,
         'songs': songs,
-	'fixedSong': oneSong,
-        })
-    return HttpResponse(tmplt.render(ctx))
+        'fixedSong': oneSong,
+        }, RequestContext(request))
 

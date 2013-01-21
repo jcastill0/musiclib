@@ -15,6 +15,7 @@ class Video(models.Model):
     name = models.CharField(max_length=256, null=True, blank=True)
     video = models.URLField()
     embedCode = models.TextField(max_length=512, null=True, blank=True)
+    #viewedCnt = models.IntegerField(null=True, blank=True)
     def __unicode__(self):
         return self.name
 
@@ -25,6 +26,7 @@ class Song(models.Model):
     file = models.FileField(upload_to='media')
     video = models.ForeignKey(Video, null=True, blank=True)
     artist = models.ForeignKey(Artist)
+    #viewedCnt = models.IntegerField(null=True, blank=True)
     def __unicode__(self):
 	return self.name
 
