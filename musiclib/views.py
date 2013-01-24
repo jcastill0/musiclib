@@ -40,6 +40,8 @@ def index(request):
 
 
 def playlistIndex(request):
+    if not request.user.is_authenticated():
+	return (index(request))
     playlists = Playlist.objects.all().order_by('-name')[:5]
     return render_to_response('musiclib/playlist/index.html', {
         'playlists': playlists,
