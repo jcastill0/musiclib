@@ -120,9 +120,11 @@ def playlistPlay(request, playlist_id):
     songs = playlist.songs.all()
     if (songs):
 	oneSong = songs[0]
+	logger.debug('Path=%r' % oneSong.file)
     return render_to_response('musiclib/playlist/playlist.html', {
         'playlist': playlist,
         'songs': songs,
+	'songCnt': playlist.songs.count(),
         'fixedSong': oneSong,
         }, RequestContext(request))
 

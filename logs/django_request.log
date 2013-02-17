@@ -1,71 +1,56 @@
-2013-01-16 20:12:02,058 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-16 20:12:07,469 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /musicapp/musiclib/login/
-2013-01-20 17:45:11,900 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:45:20,361 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/login/
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
-    response = callback(request, *callback_args, **callback_kwargs)
-  File "/home/julio/Projects/mysite/musiclib/views.py", line 14, in login_view
-    username = request.POST['username']
-  File "/usr/local/lib/python2.7/dist-packages/django/utils/datastructures.py", line 258, in __getitem__
-    raise MultiValueDictKeyError("Key %r not found in %r" % (key, self))
-MultiValueDictKeyError: "Key 'username' not found in <QueryDict: {u'csrfmiddlewaretoken': [u'PEZWKuzSTEgWnyzlIixYnsb1mniBtT82']}>"
-2013-01-20 17:50:00,188 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:50:06,563 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/login/
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
-    response = callback(request, *callback_args, **callback_kwargs)
-  File "/home/julio/Projects/mysite/musiclib/views.py", line 15, in login_view
-    password = request.POST['password']
-  File "/usr/local/lib/python2.7/dist-packages/django/utils/datastructures.py", line 258, in __getitem__
-    raise MultiValueDictKeyError("Key %r not found in %r" % (key, self))
-MultiValueDictKeyError: "Key 'password' not found in <QueryDict: {u'username': [u'julio'], u'csrfmiddlewaretoken': [u'PEZWKuzSTEgWnyzlIixYnsb1mniBtT82']}>"
-2013-01-20 17:50:32,638 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:56:13,379 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:56:59,458 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:57:25,747 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:57:27,546 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 17:59:05,229 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 18:10:01,810 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 18:10:42,523 [ERROR] django.request: Internal Server Error: /musicapp/musiclib/login/
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
-    response = callback(request, *callback_args, **callback_kwargs)
-  File "/home/julio/Projects/mysite/musiclib/views.py", line 14, in login_view
-    username = request.POST['username']
-  File "/usr/local/lib/python2.7/dist-packages/django/utils/datastructures.py", line 258, in __getitem__
-    raise MultiValueDictKeyError("Key %r not found in %r" % (key, self))
-MultiValueDictKeyError: "Key 'username' not found in <QueryDict: {}>"
-2013-01-20 19:03:07,977 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 19:03:15,488 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:03:17,873 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /musicapp/musiclib/logout/
-2013-01-20 19:11:16,757 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 19:11:24,427 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:11:26,119 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /musicapp/musiclib/logout/
-2013-01-20 19:34:34,267 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 19:34:40,545 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:39:32,829 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 19:39:39,057 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:39:40,811 [WARNING] django.request: Not Found: /musicapp/musiclib/logout/img/favicon.ico
-2013-01-20 19:40:13,460 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:40:17,696 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
-2013-01-20 19:40:21,094 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /musicapp/musiclib/logout/
-2013-01-20 19:40:26,375 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
-2013-01-20 19:40:32,582 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
-2013-01-20 19:40:41,552 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:40:46,665 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/add/img/favicon.ico
-2013-01-20 19:40:48,806 [WARNING] django.request: Not Found: /musicapp/musiclib/logout/img/favicon.ico
-2013-01-20 19:41:12,699 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:41:25,040 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
-2013-01-20 19:41:32,402 [WARNING] django.request: Not Found: /musicapp/musiclib/logout/img/favicon.ico
-2013-01-20 19:42:22,319 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:42:34,772 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
-2013-01-20 19:53:33,742 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /musicapp/musiclib/logout/
-2013-01-20 19:54:32,624 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
-2013-01-20 19:54:37,283 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /musicapp/musiclib/logout/
-2013-01-20 19:54:40,040 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
-2013-01-20 19:54:48,209 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/edit/27/img/favicon.ico
-2013-01-20 19:54:51,633 [WARNING] django.request: Not Found: /musicapp/musiclib/logout/img/favicon.ico
-2013-01-20 19:55:28,605 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
-2013-01-20 19:55:31,222 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
-2013-01-20 19:55:34,173 [WARNING] django.request: Not Found: /musicapp/musiclib/logout/img/favicon.ico
+2013-02-04 20:18:39,986 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-04 20:18:45,660 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:18:46,292 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:18:46,498 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:18:46,565 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:18:46,658 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:25:49,064 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:25:49,341 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:25:49,689 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:25:49,785 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:25:49,878 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/media/B-52s_-_Love_Shack.mp3
+2013-02-04 20:26:23,597 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-04 20:28:06,954 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-04 20:28:35,784 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-04 20:29:08,451 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-04 20:30:09,532 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-02-04 20:30:12,393 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-04 20:32:32,238 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-04 20:34:36,329 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-04 20:40:03,349 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-04 20:40:28,758 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-04 20:41:29,203 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-04 20:43:14,610 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-07 23:27:56,504 [WARNING] django.request: Not Found: /musicapp/musiclib/video.html
+2013-02-09 20:19:07,914 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
+2013-02-09 20:19:48,396 [WARNING] django.request: Not Found: /musicapp/musiclib/img/favicon.ico
+2013-02-10 21:29:40,271 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-02-10 21:29:49,331 [WARNING] django.request: Not Found: /musicapp/musiclib/login/img/favicon.ico
+2013-02-10 21:29:54,945 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-10 21:30:54,466 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 19:58:45,242 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-02-11 19:58:47,097 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 19:59:38,555 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 20:00:04,734 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 20:02:42,426 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 20:04:47,265 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 20:05:57,415 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/27/img/favicon.ico
+2013-02-11 20:07:02,626 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-02-11 20:07:05,113 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-11 20:09:48,814 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-11 20:15:05,717 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-11 20:34:33,914 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-11 20:34:54,406 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-11 20:45:28,586 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 20:51:12,385 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/img/favicon.ico
+2013-02-12 20:51:15,329 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 20:54:01,884 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 20:55:07,763 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:09:49,476 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:13:54,015 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:16:15,613 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:19:08,926 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:32:36,522 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:33:00,643 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:38:24,279 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico
+2013-02-12 21:46:27,166 [WARNING] django.request: Not Found: /musicapp/musiclib/playlist/play/1/img/favicon.ico

@@ -33,7 +33,7 @@
 	    <a class="brand" href="#">My Music Library</a>
 	    <div class="nav-collapse collapse">
 		<ul class="nav">
-		    <li class="active"><a href="/musicapp/musiclib/">Home</a></li>
+		    <li class="active"><a href="/musicapp/musiclib/playlist">Home</a></li>
 		    <li><a href="#about">About</a></li>
 		    <li><a href="#contact">Contact</a></li>
 		</ul>
@@ -46,22 +46,32 @@
       </div>
     </div>
     <div class="container">
-      <h1>{{ playlist.name }}</h1>
       <div class="row">
 	<div class="span6">
-          <ul class="nav nav-list">
-            <li class="nav-header">Songs</li>
+	  <h1>{{ playlist.name }}</h1>
+	</div>
+	<div class="span4">
+	  <button class="btn btn-large btn-primary" type="button" onClick="startPlaying();">Start Playing</button>
+	</div>
+	<div class="span2">
+	  <a href="/musicapp/musiclib/playlist/">[Back to Playlists]</a>
+	</div>
+      </div>
+      <div class="row">
+	<div class="span6">
+          <ul class="nav nav-list" id="SongListID">
+            <li class="nav-header">[{{ songCnt}}] Songs</li>
 	    {% if songs %}
 	      {% for song in songs %}
-	    <li><i class="icon-music"></i>{{ song.artist.name }} - {{ song.name }}</li>
+	    <li id="id_{{song.id}}"><i class="icon-music"></i>{{ song.artist.name }} - {{ song.name }}</li>
 	      {% endfor %}
 	    {% endif %}
 	  </ul>
         </div>
 	<div class="span6">
 	  {% if songs %}
-	  <h4>Now Playing: {{fixedSong.name}}</h4>
-	  <audio src="/static/{{ fixedSong.file }}" controls>
+	  <h4 id="NowPlayingID">Now Playing: </h4>
+	  <audio id="AudioPlayerID" src="/static/{{ fixedSong.file }}" controls>
 	  </audio>
 	  {% endif %}
 	</div>
@@ -70,7 +80,45 @@
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript">
+    $.Song = function (id, name, path, artist) {
+	this.id = id;
+	this.name = name;
+	this.path = path;
+	this.artist = artist;
+    };
+    $.PlayList = function (name) {
+	this.name = name;
+	this.songs = [];
+	this.currentSongIX = 0;
+    };
+    var playlist = new $.PlayList('{{ playlist.name }}');
+    (function() {
+	var currSong;
+	{% for song in songs %}
+	currSong = new $.Song({{song.id}},
+		'{{song.name}}','/static/{{song.file}}',
+		'{{song.artist.name}}');
+	playlist.songs.push(currSong);
+	{% endfor %}
+    })();
+    function playNextSong(player) {
+      if (playlist.currentSongIX >= playlist.songs.length) 
+	  return;
+      $('#NowPlayingID').text(
+		'Now Playing: ' + playlist.songs[playlist.currentSongIX].name);
+      player.src = playlist.songs[playlist.currentSongIX].path;
+      player.play();
+      playlist.currentSongIX++;
+    }
+    function startPlaying() {
+	var player = document.getElementById("AudioPlayerID");
+	player.addEventListener('ended', function() {
+		playNextSong(player);
+		}, false);
+	playNextSong(player);
+    };
+    </script>
   </body>
 
 </html>
