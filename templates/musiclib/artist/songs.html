@@ -47,78 +47,29 @@
     </div>
     <div class="container">
       <div class="row">
-	<div class="span6">
-	  <h1>{{ playlist.name }}</h1>
-	</div>
-	<div class="span4">
-	  <button class="btn btn-large btn-primary" type="button" onClick="startPlaying();">Start Playing</button>
+	<div class="span10">
+	  <h1>{{ artist.name }}</h1>
 	</div>
 	<div class="span2">
 	  <a href="/musicapp/musiclib/playlist/">[Back to Playlists]</a>
 	</div>
       </div>
       <div class="row">
-	<div class="span6">
+	<div class="span12">
           <ul class="nav nav-list" id="SongListID">
-            <li class="nav-header">[{{ songCnt}}] Songs</li>
+            <li class="nav-header">Songs</li>
 	    {% if songs %}
 	      {% for song in songs %}
-	    <li id="id_{{song.id}}"><i class="icon-music"></i>{{ song.artist.name }} - {{ song.name }}</li>
+	    <li id="id_{{song.id}}"><i class="icon-music"></i><a href="/static/{{ song.file }}">{{ song.name }}</a></li>
 	      {% endfor %}
 	    {% endif %}
 	  </ul>
         </div>
-	<div class="span6">
-	  {% if songs %}
-	  <h4 id="NowPlayingID">Now Playing: </h4>
-	  <audio id="AudioPlayerID" controls>
-	  </audio>
-	  {% endif %}
-	</div>
       </div>
     </div>
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-    $.Song = function (id, name, path, artist) {
-	this.id = id;
-	this.name = name;
-	this.path = path;
-	this.artist = artist;
-    };
-    $.PlayList = function (name) {
-	this.name = name;
-	this.songs = [];
-	this.currentSongIX = 0;
-    };
-    var playlist = new $.PlayList('{{ playlist.name }}');
-    (function() {
-	var currSong;
-	{% for song in songs %}
-	currSong = new $.Song({{song.id}},
-		'{{song.name}}','/static/{{song.file}}',
-		'{{song.artist.name}}');
-	playlist.songs.push(currSong);
-	{% endfor %}
-    })();
-    function playNextSong(player) {
-      if (playlist.currentSongIX >= playlist.songs.length) 
-	  return;
-      $('#NowPlayingID').text(
-		'Now Playing: ' + playlist.songs[playlist.currentSongIX].name);
-      player.src = playlist.songs[playlist.currentSongIX].path;
-      player.play();
-      playlist.currentSongIX++;
-    }
-    function startPlaying() {
-	var player = document.getElementById("AudioPlayerID");
-	player.addEventListener('ended', function() {
-		playNextSong(player);
-		}, false);
-	playNextSong(player);
-    };
-    </script>
   </body>
 
 </html>

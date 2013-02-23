@@ -49,47 +49,26 @@
       <div class="row">
 	<div class="span1">
 	</div>
-	<div class="span5">
-	  <h2>Playlists</h2>
+	<div class="span9">
+	  <h2>Artists</h2>
 	</div>
-	<div class="span6">
-	  <a class="btn btn-small btn-primary" href="/musicapp/musiclib/playlist/add">Add</a>
+	<div class="span2">
+	  <a href="/musicapp/musiclib/playlist/">[Back to Playlists]</a>
 	</div>
       </div>
-      {% if playlists %}
-	{% for playlist in playlists %}
+      {% if artists %}
+	{% for artist in artists %}
 	  <div class="row">
 	    <div class="span1">
 	    </div>
-	    <div class="span5">
-	      {{ playlist.name }}
-	    </div>
-	    <div class="span1">
-	      <a href="/musicapp/musiclib/playlist/play/{{playlist.id}}" data-toggle="tooltip" title="Play"><i class="icon-play"></i></a>
-	    </div>
-	    <div class="span1">
-	      <a href="/musicapp/musiclib/playlist/delete/{{playlist.id}}" data-toggle="tooltip" title="Delete" id="DeleteActionID" onClick="return confirm('Are you sure you want to delete this playlist?');"><i class="icon-remove icon-red"></i></a>
-	    </div>
-	    <div class="span4">
-	      <a href="/musicapp/musiclib/playlist/edit/{{playlist.id}}" data-toggle="tooltip" title="Edit"><i class="icon-edit"></i></a>
+	    <div class="span11">
+	      <a href="/musicapp/musiclib/artist/songs/{{artist.id}}">{{ artist.name }}</a>
 	    </div>
 	  </div>
 	{% endfor %}
       {% else %}
             <a href="#">...</a>
       {% endif %}
-      <div class="row">
-	<div class="span12">
-	  <hr/>
-	</div>
-      </div>
-      <div class="row">
-	<div class="span1">
-	</div>
-	<div class="span11">
-	  <h2>All<a href="/musicapp/musiclib/artist"> Artists</a><h2>
-	</div>
-      </div>
 
     </div>
 

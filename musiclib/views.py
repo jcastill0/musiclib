@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
-from musiclib.models import Song, Playlist
+from musiclib.models import Song, Playlist, Artist
 from django.template import Context, loader, RequestContext
 from django.http import Http404
 import logging
@@ -39,6 +39,15 @@ def index(request):
         }, RequestContext(request))
 
 
+def artistIndex(request):
+    if not request.user.is_authenticated():
+	return (index(request))
+    artists = Artist.objects.all().order_by('-name')[:5]
+    return render_to_response('musiclib/artist/index.html', {
+	'artists': artists,
+	}, RequestContext(request))
+
+
 def playlistIndex(request):
     if not request.user.is_authenticated():
 	return (index(request))
@@ -49,6 +58,8 @@ def playlistIndex(request):
 
 
 def playlistAdd(request):
+    if not request.user.is_authenticated():
+	return (index(request))
     ctx = RequestContext(request)
     return render_to_response('musiclib/playlist/addPlaylist.html', ctx)
 
@@ -104,6 +115,8 @@ def playlistSaveSongs(request):
 
 
 def playlistDelete(request, playlist_id):
+    if not request.user.is_authenticated():
+	return (index(request))
     try:
         playList = Playlist.objects.get(pk=playlist_id)
     except Playlist.DoesNotExist:
@@ -113,6 +126,8 @@ def playlistDelete(request, playlist_id):
 
 
 def playlistPlay(request, playlist_id):
+    if not request.user.is_authenticated():
+	return (index(request))
     try:
         playlist = Playlist.objects.get(pk=playlist_id)
     except Playlist.DoesNotExist:
@@ -125,6 +140,23 @@ def playlistPlay(request, playlist_id):
         'playlist': playlist,
         'songs': songs,
 	'songCnt': playlist.songs.count(),
-        'fixedSong': oneSong,
+        }, RequestContext(request))
+
+
+def songsByArtist(request, artist_id):
+    if not request.user.is_authenticated():
+	return (index(request))
+    try:
+	art = Artist.objects.get(pk=artist_id)
+    except Artist.DoesNotExist:
+	raise Http404
+    try:
+	songs = list(Song.objects.filter(artist=art))
+    except Song.DoesNotExist:
+	raise Http404
+    logger.debug('songs=%r' % songs)
+    return render_to_response('musiclib/artist/songs.html', {
+        'songs': songs,
+        'artist': art,
         }, RequestContext(request))
 

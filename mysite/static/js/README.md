@@ -1,4 +1,4 @@
-## 2.0 BOOTSTRAP JS PHILOSOPHY
+## 2.3 BOOTSTRAP JS PHILOSOPHY
 These are the high-level design rules which guide the development of Bootstrap's plugin apis.
 
 ---
