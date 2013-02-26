@@ -26,7 +26,7 @@ class Song(models.Model):
     file = models.FileField(upload_to='media')
     video = models.ForeignKey(Video, null=True, blank=True)
     artist = models.ForeignKey(Artist)
-    #viewedCnt = models.IntegerField(null=True, blank=True)
+    #playedCnt = models.IntegerField(null=True, blank=True)
     def __unicode__(self):
 	return self.name
 
