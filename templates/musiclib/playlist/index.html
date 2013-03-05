@@ -36,6 +36,8 @@
 		    <li class="active"><a href="/musicapp/musiclib/">Home</a></li>
 		    <li><a href="#about">About</a></li>
 		    <li><a href="#contact">Contact</a></li>
+		    <li>|</li>
+		    <li><a href="/musicapp/musiclib/profile">[{{ user.username }}]</a></li>
 		</ul>
 		<form class="navbar-form pull-right" action="/musicapp/musiclib/logout/" method="post">
 		{% csrf_token %}
@@ -79,15 +81,19 @@
             <a href="#">...</a>
       {% endif %}
       <div class="row">
-	<div class="span12">
+	<div class="span1">
+	</div>
+	<div class="span8">
 	  <hr/>
+	</div>
+	<div class="span3">
 	</div>
       </div>
       <div class="row">
 	<div class="span1">
 	</div>
 	<div class="span11">
-	  <h3><a href="/musicapp/musiclib/artist">Show Artists</a><h3>
+	  <h3><a href="/musicapp/musiclib/artist">Artists</a><h3>
 	</div>
       </div>
 

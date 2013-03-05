@@ -39,13 +39,40 @@ def index(request):
         }, RequestContext(request))
 
 
+def profile(request):
+    if not request.user.is_authenticated():
+	return (index(request))
+    return render_to_response('musiclib/profile/index.html', {
+	'user': request.user,
+	}, RequestContext(request))
+
+
 def artistIndex(request):
     if not request.user.is_authenticated():
 	return (index(request))
-    artists = Artist.objects.all().order_by('-name')
+    artists = Artist.objects.all().order_by('name')
     return render_to_response('musiclib/artist/index.html', {
 	'artists': artists,
+	'user': request.user,
 	}, RequestContext(request))
+
+
+def profileSave(request):
+    loginName = request.POST['loginName']
+    email = request.POST['email']
+    firstName = request.POST['firstName']
+    lastName = request.POST['lastName']
+    user = User.objects.get(pk=request.user.id)
+    if (loginName):
+	user.username = loginName
+    if (email):
+	user.email = email
+    if (firstName):
+	user.first_name = firstName
+    if (lastName):
+	user.last_name = lastName
+    user.save()
+    return (profile(request))
 
 
 def playlistIndex(request):
@@ -54,6 +81,7 @@ def playlistIndex(request):
     playlists = Playlist.objects.all().filter(owner=request.user).order_by('-name')
     return render_to_response('musiclib/playlist/index.html', {
         'playlists': playlists,
+	'user': request.user,
         }, RequestContext(request))
 
 
@@ -95,6 +123,7 @@ def playlistEdit(request, playlist_id):
         'playlist': playlist,
         'playListSongs': playListSongs,
         'allSongs': allSongsList,
+	'user': request.user,
 	}, RequestContext(request))
 
 
@@ -106,12 +135,10 @@ def playlistSaveSongs(request):
 	raise Http404
     songIDs = request.POST.getlist('playListSongs')
     logger.debug('newSongs=%r' % songIDs)
-    #playlist.songs.clear()
     for songID in songIDs:
 	song = Song.objects.get(pk=songID)
 	playlist.songs.add(song)
     playlist.lastPlayedIX = 0
-    #playlist.save(force_update=True)
     return (playlistIndex(request))
 
 
@@ -138,6 +165,7 @@ def playlistPlay(request, playlist_id):
         'playlist': playlist,
         'songs': songs,
 	'songCnt': playlist.songs.count(),
+	'user': request.user,
         }, RequestContext(request))
 
 
@@ -149,13 +177,14 @@ def songsByArtist(request, artist_id):
     except Artist.DoesNotExist:
 	raise Http404
     try:
-	songs = list(Song.objects.filter(artist=art).order_by('-name'))
+	songs = list(Song.objects.filter(artist=art).order_by('name'))
     except Song.DoesNotExist:
 	raise Http404
-    playlists = Playlist.objects.all().filter(owner=request.user).order_by('-name')
+    playlists = Playlist.objects.all().filter(owner=request.user).order_by('name')
     return render_to_response('musiclib/artist/songs.html', {
         'songs': songs,
         'artist': art,
 	'playlists': playlists,
+	'user': request.user,
         }, RequestContext(request))
 

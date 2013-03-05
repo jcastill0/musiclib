@@ -7,3 +7,8 @@
 .icon-red{
     color: red;
 }
+
+hr {
+    height: 10px;
+    color: blue;
+}
